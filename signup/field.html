@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Field of Expertise</title>
+
+    <!--Links-->
+    <link rel="stylesheet" href="signup_style.css">
+    <link rel="stylesheet" href="bootstrap.css">
+    <script src="jquery-3.6.0.js"></script>
+    <script src="popper.min.js"></script>
+    <script src="bootstrap.js"></script>
+</head>
+<body>
+
+    <!--Content-->
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <h1 class="text-center mt-5">Please choose field of expertise</h1>
+            <div class="col-lg-4 m-5">
+                <div class="text-left text-white h-100 p-3"
+                    style="background-color: rgba(0, 0, 255, 0.5); border-radius: 20px;">
+                    <h1 class="text-center">Food</h1>
+                    <p class="text-center">Select services you provide</p>
+                    <input type="checkbox" id="cook" style="cursor: pointer; margin-right: 10px"><label for="cook" style="cursor: pointer;">Cook</label><br>
+                    <input type="checkbox" id="cater" style="cursor: pointer; margin-right: 10px"><label for="cater" style="cursor: pointer;">Cater</label><br>
+                    <input type="checkbox" id="baker" style="cursor: pointer; margin-right: 10px"><label for="baker" style="cursor: pointer;">Baker</label>
+                </div>
+            </div>
+    
+            <div class="col-lg-4 m-5">
+                <div class="text-left text-white h-100 p-3" style="background-color: rgba(0, 0, 255, 0.5); border-radius: 20px;">
+                    <h1 class="text-center">Maintenance</h1>
+                    <p class="text-center">Select services you provide:</p>
+                    <input type="checkbox" id="electrician" style="cursor: pointer; margin-right: 10px"><label for="electrician"
+                        style="cursor: pointer;">Electrician</label><br>
+
+                    <input type="checkbox" id="plumber" style="cursor: pointer; margin-right: 10px"><label for="plumber"
+                        style="cursor: pointer;">Plumber</label><br>
+
+                    <input type="checkbox" id="mechanic" style="cursor: pointer; margin-right: 10px"><label for="mechanic"
+                        style="cursor: pointer;">Mechanic</label>
+                </div>
+            </div>
+        </div>
+    
+        <div class="row justify-content-center">
+            <div class="col-lg-4 m-5">
+                <div class="text-left text-white h-100 p-3" style="background-color: rgba(0, 0, 255, 0.5); border-radius: 20px;">
+                    <h1 class="text-center">Crafts</h1>
+                    <p class="text-center">Select services you provide:</p>
+                    <input type="checkbox" id="furniture" style="cursor: pointer; margin-right: 10px"><label for="furniture"
+                        style="cursor: pointer;">Furniture</label><br>
+            
+                    <input type="checkbox" id="tailoring" style="cursor: pointer; margin-right: 10px"><label for="tailoring"
+                        style="cursor: pointer;">Tailoring</label><br>
+            
+                    <input type="checkbox" id="carpenter" style="cursor: pointer; margin-right: 10px"><label for="carpenter"
+                        style="cursor: pointer;">Carpenter</label>
+                </div>
+            </div>
+    
+            <div class="col-lg-4 m-5">
+                <div class="text-left text-white h-100 p-3" style="background-color: rgba(0, 0, 255, 0.5); border-radius: 20px;">
+                    <h1 class="text-center">Home Service</h1>
+                    <p class="text-center">Select services you provide:</p>
+                    <input type="checkbox" id="baby" style="cursor: pointer; margin-right: 10px"><label for="baby"
+                        style="cursor: pointer;">Baby Sitter</label><br>
+            
+                    <input type="checkbox" id="laundry" style="cursor: pointer; margin-right: 10px"><label for="laundry"
+                        style="cursor: pointer;">Laundry</label><br>
+            
+                    <input type="checkbox" id="caretaker" style="cursor: pointer; margin-right: 10px"><label for="caretaker"
+                        style="cursor: pointer;">Caretaker</label>
+                </div>
+            </div>
+        </div>
+        <form action="/provider_final" method="POST" class="text-center mb-5 p-3">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+    </div>
+    
+</body>
+</html>

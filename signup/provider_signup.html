@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Provider Signup</title>
+
+    <!--Links-->
+    <link rel="stylesheet" href="signup_style.css">
+    <link rel="stylesheet" href="bootstrap.css">
+    <script src="jquery-3.6.0.js"></script>
+    <script src="popper.min.js"></script>
+    <script src="bootstrap.js"></script>
+</head>
+
+<body>
+    <div class="container-fluid text-center" style="margin-top: 5%;" id="form_container">
+        <form action="/provider_submit" method="POST" class="d-flex flex-column justify-content-center">
+            <h3 class="text-white">Sign up as Service Provider</h3>
+            <input type="text" name="fname" placeholder="Enter Firstname" autocomplete="off" required><br>
+            <input type="text" name="lname" placeholder="Enter Lastname" autocomplete="off" required><br>
+            <span style="display: flex;">
+                <input type="number" inputmode="numeric" placeholder="Age" style="width: 50px;" name="age">
+
+                <label for="gender" style="margin-left: 50px; margin-right: 10px; color: white;">Gender:</label>
+                <select name="gender" id="gender" style="width: 100px; border: none; background: none; color: white; outline: none; border-bottom: 2px solid white;">
+                    <option value="male" style="color: black;">Male</option>
+                    <option value="female" style="color: black;">Female</option>
+                    <option value="martian" style="color: black;">Martian</option>
+                    <option value="lunarian" style="color: black;">Lunarian</option>
+                    <option value="unknown" style="color: black;">Prefer not to say</option>
+                </select>
+            </span><br>
+
+            <input type="text" name="username" placeholder="Enter Username" autocomplete="off" required><br>
+            <input type="password" name="password" placeholder="Enter Password" autocomplete="off" required><br>
+            <input type="text" name="address" placeholder="Enter Address" autocomplete="off" required><br>
+            <input type="text" name="email" placeholder="Enter Email(optional)" autocomplete="off"><br>
+
+            <button type="submit">Next</button>
+        </form>
+    </div>
+</body>
+
+</html>

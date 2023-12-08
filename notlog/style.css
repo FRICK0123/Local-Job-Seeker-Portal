@@ -1,0 +1,56 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-image: url('typr.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+nav{
+    background-image: linear-gradient(to right, skyblue, blue);
+}
+
+#navbarNav ul li a{
+    font-weight: 500;
+}
+
+#login{
+    width: 50%;
+    background-color: rgba(0, 0, 255, 0.5);
+    border-radius: 20px;
+    margin-right: 100px;
+}
+
+#user,#pass{
+    background: none;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid black;
+    color: white;
+}
+
+::placeholder{
+    color: white;
+}
+
+#offcanvas a {
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+}
+
+#offcanvas a:hover {
+    background-color: black;
+    color: white;
+    transition: .5s;
+}
+
+@media only screen and (max-width: 425px){
+        #main_car{
+            display: none;
+        }
+}

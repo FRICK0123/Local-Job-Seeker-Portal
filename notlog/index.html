@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Seeker Portal</title>
+
+    <!--Links-->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="bootstrap.css">
+    <script src="jquery-3.6.0.js"></script>
+    <script src="popper.min.js"></script>
+    <script src="bootstrap.js"></script>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-md p-3">
+            <a href="#" class="navbar-brand fs-2" style="flex: 10;">LOGO</a>   
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link fs-5" href="#" style="border-bottom: 3px solid rgb(21, 233, 74); color: black;">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fs-5" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fs-5" href="services.html">Services</a>
+                    </li>
+                    <li class="nav-item fs-5">
+                        <a class="nav-link" href="contact.html">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+            <!--<div id="search">
+                <input type="text" class="form-control p-1" placeholder="Search">
+            </div>-->
+
+            <!--Sidepanel-->
+            <div id="side" class="float-end d-md-none">
+                <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasEnd"
+                    aria-controls="offcanvasEnd" id="menu"><img src="list.svg" alt="bars" width="50"></button>
+            
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasEnd">
+                    <div class="offcanvas-header">
+                        <h5 id="offcanvasTopLabel">Menu</h5>
+                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body p-0 d-flex flex-column text-center" id="offcanvas">
+                        <a href="#" class="mt-2 p-2">Home</a>
+                        <a href="about.html" class="mt-2 p-2">About Us</a>
+                        <a href="services.html" class="mt-2 p-2">Services</a>
+                        <a href="contact.html" class="mt-2 p-2">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        
+    </header>
+
+    <!--Content-->
+    <div class="container-fluid" id="main">
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <div class="d-flex flex-column justify-content-center mt-5">
+                    <h1 style="text-align: center;">
+                        Empowering Your <br> 
+                        Job Search <br> 
+                        Here in Siquijor
+                    </h1>
+                    <p style="text-align: center;">Signup as employers to post job vacancies</p>
+                    <p style="text-align: center;">Signup as jobseekers to seek job vacancies</p>
+
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-md-6" id="forms">
+                <div class="d-flex justify-content-center">
+                    <form action="/login" method="post" class="text-center ms-5 mt-5 pt-5 pb-5" id="login">
+                        <h2>Log in</h2>
+                        <input type="text" placeholder="Username" name="username" id="user" autocomplete="off" required class="w-75 p-1"><br><br>
+                        <input type="password" name = "password" placeholder="Password" id="pass" required class="w-75 p-1"><br><br>
+
+                        <label for="show" style="cursor: pointer; color: white;" id="label">Show Password</label>
+                        <input type="checkbox" id="show"><br><br>
+
+                        <button type="submit" class="btn bg-dark ps-5 pe-5 text-white fw-bold">Log in</button><br>
+                        <a href="/signup">Sign up</a>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container mt-5 pb-5 w-75" id="main_car">
+        <div class="carousel slide carousel-fade" id="topCar" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active" data-bs-interval="2000">
+                    <img src="photos/cook.jpg" alt="Cook" class="d-block w-100" height="400" style="border-radius: 50px;">
+
+                    <div class="carousel-caption">
+                        <h4>Become a Cook</h4>
+                    </div>
+                </div>
+    
+                <div class="carousel-item" data-bs-interval="2000">
+                    <img src="photos/craft.jpg" alt="Craft" class="d-block w-100" height="400" style="border-radius: 50px;">
+
+                    <div class="carousel-caption">
+                        <h4>Craft Something for a Service</h4>
+                    </div>
+                </div>
+    
+                <div class="carousel-item" data-bs-interval="2000">
+                    <img src="photos/maintenance.jpg" alt="Maintenance" class="d-block w-100" height="400" style="border-radius: 50px;">
+
+                    <div class="carousel-caption">
+                        <h4>Fix and Maintain Stuff</h4>
+                    </div>
+                </div>
+    
+                <div class="carousel-item" data-bs-interval="2000">
+                    <img src="photos/homeservice.jpg" alt="Home Service" class="d-block w-100" height="400" style="border-radius: 50px;">
+
+                    <div class="carousel-caption">
+                        <h4>Offer Home Service</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+         //script for showing and hiding password whenever the checkbox is clicked
+            let showp = document.getElementById('pass');
+            let check = document.getElementById('show');
+
+            check.addEventListener('click', () => {
+                if (showp.type === 'password') {
+                    showp.type = 'text';
+                } else {
+                    showp.type = 'password';
+                }
+            });
+
+            function showP() {
+                if (showp.type === 'password') {
+                    showp.type = 'text';
+                } else {
+                    showp.type = 'password';
+                }
+            }
+    </script>
+</body>
+</html>

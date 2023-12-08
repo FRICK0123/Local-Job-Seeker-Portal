@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services</title>
+
+    <!--Links-->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="bootstrap.css">
+    <script src="jquery-3.6.0.js"></script>
+    <script src="popper.min.js"></script>
+    <script src="bootstrap.js"></script>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-md p-3">
+            <a href="#" class="navbar-brand fs-2" style="flex: 10;">LOGO</a>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link fs-5" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fs-5" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fs-5" href="#" style="border-bottom: 3px solid rgb(21, 233, 74); color: black;">Services</a>
+                    </li>
+                    <li class="nav-item fs-5">
+                        <a class="nav-link" href="contact.html">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+            <!--<div id="search">
+                <input type="text" class="form-control p-1" placeholder="Search">
+            </div>-->
+
+            <!--Sidepanel-->
+            <div id="side" class="float-end d-md-none">
+                <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasEnd"
+                    aria-controls="offcanvasEnd" id="menu"><img src="list.svg" alt="bars" width="50"></button>
+            
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasEnd">
+                    <div class="offcanvas-header">
+                        <h5 id="offcanvasTopLabel">Menu</h5>
+                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body p-0 d-flex flex-column text-center" id="offcanvas">
+                        <a href="index.html" class="mt-2 p-2">Home</a>
+                        <a href="about.html" class="mt-2 p-2">About Us</a>
+                        <a href="#" class="mt-2 p-2">Services</a>
+                        <a href="contact.html" class="mt-2 p-2">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!--Content-->
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-lg-4 m-5">
+                <div class="text-center text-white h-100 p-3" style="background-image: url('photos/food_background.webp'); border-radius: 20px;">
+                    <h1>Food</h1>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates porro deleniti obcaecati beatae cum magni
+                        explicabo quibusdam iusto repellat adipisci quisquam molestias saepe quas officiis deserunt voluptatum suscipit
+                        recusandae laudantium nulla quos eos, eligendi repudiandae, minima accusamus. Debitis laudantium dolorem sint
+                        fugit voluptatum in sequi qui animi aperiam, distinctio voluptate.</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 m-5">
+                <div class="text-center text-white h-100 p-3" style="background-image: url(photos/maintenance_background.jpg); background-size: cover; border-radius: 20px;">
+                    <h1>Maintenance</h1>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates porro deleniti obcaecati beatae cum magni
+                        explicabo quibusdam iusto repellat adipisci quisquam molestias saepe quas officiis deserunt voluptatum suscipit
+                        </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-4 m-5">
+                <div class="text-center text-white h-100 p-3"
+                    style="background-image: url('photos/craft_background.jpg'); background-size: cover; border-radius: 20px;">
+                    <h1 style="color: black;">Craft</h1>
+                    <p style="color: black;">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates porro deleniti obcaecati beatae cum
+                        magni
+                        explicabo quibusdam iusto repellat adipisci quisquam molestias saepe quas officiis deserunt voluptatum
+                        suscipit
+                        recusandae laudantium nulla quos eos, eligendi repudiandae, minima accusamus. Debitis laudantium dolorem
+                        sint
+                        fugit voluptatum in sequi qui animi aperiam, distinctio voluptate.</p>
+                </div>
+            </div>
+        
+            <div class="col-lg-4 m-5">
+                <div class="text-center text-white h-100 p-3"
+                    style="background-image: url('photos/home_background.avif'); background-size: cover; border-radius: 20px;">
+                    <h1 style="color: black;">Home Service</h1>
+                    <p style="color: black;">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates porro deleniti obcaecati beatae cum
+                        magni
+                        explicabo quibusdam iusto repellat adipisci quisquam molestias saepe quas officiis deserunt voluptatum
+                        suscipit
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

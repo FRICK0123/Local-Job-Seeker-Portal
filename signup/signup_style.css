@@ -1,0 +1,36 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+#form_container {
+    width: 350px;
+}
+
+#form_container form{
+    background-color: rgb(61, 60, 60);
+    padding: 20px;
+    border-radius: 20px;
+}
+
+::placeholder{
+    color: silver;
+}
+
+#form_container form input{
+    color: white;
+    background: none;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid white;
+}
+#form_container form button{
+    border: none;
+    padding: 10px;
+    border-radius: 20px;
+    font-weight: 500;
+}
+#form_container form button:hover{
+    background-color: aquamarine;
+    transition: .5s;
+}
