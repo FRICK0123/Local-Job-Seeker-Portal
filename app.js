@@ -30,10 +30,10 @@ app.use(express.urlencoded({extended:true}));
 //Database connection
 const pool = mysql.createPool({
     connectionLimit: 10,
-    host: "localhost",
-    user: "root",
-    password: "",
-    database: "sia"
+    host: process.env.DB_HOST,
+    user: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_DBNAME
 });
 
 app.get("/", (req,res) => {
