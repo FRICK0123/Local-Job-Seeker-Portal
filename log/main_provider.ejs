@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main</title>
+
+    <!--Links-->
+    <link rel="stylesheet" href="main_style.css">
+    <link rel="stylesheet" href="bootstrap.css">
+    <script src="jquery-3.6.0.js"></script>
+    <script src="popper.min.js"></script>
+    <script src="bootstrap.js"></script>
+</head>
+
+<body>
+    <!--Header-->
+    <header>
+        <!--Profile Canvas-->
+        <div class="ms-md-auto">
+            <div class="float-end">
+                <button class="btn mt-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#profileCanvas"
+                        aria-controls="offcanvasEnd">
+                    <%sec.forEach((item)=>{%>
+                        <img src="/profile_images/<%=item.profileimg%>" alt="profile_icon" width="60" height="60" style="border-radius: 50%;">
+                   <%});%>
+                </button>
+            
+                <div class="offcanvas offcanvas-end" tabindex="1" id="profileCanvas">
+                    <div class="offcanvas-header">
+                        <h5>Profile</h5>
+                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                                aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body p-0 d-flex flex-column text-center align-items-center" id="offcanvas">
+                        <!--Profile Update Modal-->
+                        <div class="btn" data-bs-toggle="modal" data-bs-target="#profileModal">
+                            <%sec.forEach((item)=>{%>
+                                <img src="/profile_images/<%=item.profileimg%>" alt="profile_icon" width="100" height="100" style="border-radius: 50%;">
+                            <%});%>
+                        </div>
+
+                        <!--Profile Canvas Contents-->
+                        <%sec.forEach((item)=>{%>
+                            <h2 class="pt-2"><%=item.username%></h2>
+                            <h6 class="pt-3"><%=item.address%></h6>
+
+                            <button class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#profileDetails">Edit Profile Details</button>
+
+                            <form action="/logout" method="POST">
+                                <button class="btn btn-primary mt-3">Logout</button>
+                            </form>
+                        <%});%>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav class="navbar navbar-expand-md p-3 d-flex">
+            <a href="#" class="navbar-brand fs-2">LOGO</a>
+            <!--Search Bar-->
+            <div id="searchBar" class="d-flex">
+                <form class="d-flex" id="searchForm">
+                    <input type="text" class="form-control p-1" placeholder="Search Category" id="search" oninput="filterJobs()">
+                    <button for="search" type="submit" class="btn ms-2" style="background: none;"><img src="search.svg" alt="search" width="25" height="25"></button>
+                </form>
+            </div>
+        </nav>
+        <!--Sidepanel-->
+        <div id="side">
+            <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasEnd"
+                aria-controls="offcanvasEnd" id="menu"><img src="list.svg" alt="bars" width="50"></button>
+
+            <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasEnd">
+                <div class="offcanvas-header">
+                    <h5 id="offcanvasTopLabel">Menu</h5>
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body p-0 d-flex flex-column text-center" id="offcanvas">
+                    <a href="#" class="mt-2 p-2">Home</a>
+                    <a href="/about" class="mt-2 p-2">About Us</a>
+                    <a href="/services" class="mt-2 p-2">Services</a>
+                    <a href="/contact" class="mt-2 p-2">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!--Content-->
+    <div class="container">
+        <div class="row">
+            <% data.forEach((item)=> { %>
+                <div class="col-md-4">
+                    <div class="card mt-4" style="min-height: 300px;">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">
+                            <%sec.forEach((item)=>{%>
+                                <img src="/profile_images/<%=item.profileimg%>" alt="profile_icon" width="100" height="100" style="border-radius: 50%;">
+                            <%});%>
+                            </h5>
+                            <p class="card-text">Recruiter Name: <%= item.fullname %>
+                            </p>
+                            <p class="card-text">Address: <%= item.address %>
+                            </p>
+                            <p class="card-text" data-category="<%= item.category.toLowerCase() %>">Finding: <%= item.category %>
+                            </p>
+                            <p class="card-text">Description: <%= item.description %>
+                            </p>
+                            <p class="card-text">
+                                 <p class="card-text">Date Issued: <%= item.offerDate.toLocaleDateString() %></p>
+                            </p>
+                            <a href="<%=item.account%>" class="btn btn-primary">Message</a>
+                        </div>
+                    </div>
+                </div>
+            <% }); %>
+                <!--Profile Update Modal Body-->
+                <div class="modal fade" id="profileModal" tabindex="5" aria-labelledby="ProfileModal" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4>Change Profile Picture</h4>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+
+                            <div class="modal-body">
+                                <form action="/update" method="post" enctype="multipart/form-data">
+                                    <input type="file" name="profiles" accept="image/*">
+                                    <button type="submit" class="btn btn-primary" name="change">Submit</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Profile Details Modal Body-->
+                <div class="modal fade" id="profileDetails" tabindex="-1" aria-labelledby="ProfileModal" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4>Change Profile Details</h4>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                
+                            <div class="modal-body">
+                                <form action="/prof_upd" method="post">
+                                    <input type="text" placeholder="New Username" name="new_username" required><br><br>
+                                    <input type="text" placeholder="New Address" name="new_address" required><br><br>
+                                    <button type="submit" class="btn btn-primary" name="change">Submit</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <!-- Button trigger modal -->
+                    <div class="card mt-4" style="min-height: 300px; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <h1 class="text-center mt-5"><img src="plus.png" alt="Add Service" width="200"></h1>
+                    </div>
+                    
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add a Service</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="/postJob" method="POST">
+                                        <label for="category">Choose occupation: </label>
+                                        <select name="category" id="category" style="cursor: pointer;">
+                                            <option value="cook">Cook</option>
+                                            <option value="baker">Baker</option>
+                                            <option value="cater">Cater</option>
+                                            <option value="electrician">Electrician</option>
+                                            <option value="plumber">Plumber</option>
+                                            <option value="mechanic">Mechanic</option>
+                                            <option value="furniture">Furniture</option>
+                                            <option value="tailoring">Tailoring</option>
+                                            <option value="carpenter">Carpenter</option>
+                                            <option value="sitter">Baby Sitter</option>
+                                            <option value="laundry">Laundry</option>
+                                            <option value="caretaker">Caretaker</option>
+                                        </select><br><br>
+
+                                        <textarea name="description" id="description" cols="30" rows="5" placeholder="Add Description" style="resize: none;"></textarea><br><br>
+                                        <input type="text" name="link" placeholder="Facebook Link"><br><br>
+
+                                        <button class="btn btn-primary" type="submit" id="submitBtn"s>Submit</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('submitBtn').addEventListener('click', ()=>{
+            alert("Data Successfully Submitted, Please Reload the Page");
+            location.reload(true);
+        });
+
+        function filterJobs() {
+                const searchInput = document.getElementById('search').value.toLowerCase();
+                const jobCards = document.querySelectorAll('.col-md-4'); // Adjust the selector based on your HTML structure
+
+                jobCards.forEach(card => {
+                    const category = card.querySelector('.card-text[data-category]').dataset.category.toLowerCase();
+                    if (category.includes(searchInput)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            }
+    </script>
+</body>
+
+</html>

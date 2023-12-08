@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main</title>
+
+    <!--Links-->
+    <link rel="stylesheet" href="main_style.css">
+    <link rel="stylesheet" href="bootstrap.css">
+    <script src="jquery-3.6.0.js"></script>
+    <script src="popper.min.js"></script>
+    <script src="bootstrap.js"></script>
+</head>
+<body>
+    <!--Header-->
+    <header>
+        <!--Profile Canvas-->
+        <div class="ms-md-auto">
+            <div class="float-end">
+                <button class="btn mt-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#profileCanvas"
+                    aria-controls="offcanvasEnd">
+                    <%sec.forEach((item)=>{%>
+                        <img src="profile_images/<%=item.profileimg%>" alt="profile_icon" width="60" height="60"
+                            style="border-radius: 50%;">
+                    <%});%>
+                </button>
+        
+                <div class="offcanvas offcanvas-end" tabindex="1" id="profileCanvas">
+                    <div class="offcanvas-header">
+                        <h5>Profile</h5>
+                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body p-0 d-flex flex-column text-center align-items-center" id="offcanvas">
+                        <!--Profile Update Modal-->
+                        <div class="btn" data-bs-toggle="modal" data-bs-target="#profileModal">
+                            <%sec.forEach((item)=>{%>
+                                <img src="profile_images/<%=item.profileimg%>" alt="profile_icon" width="100" height="100"
+                                    style="border-radius: 50%;">
+                                <%});%>
+                        </div>
+        
+                        <!--Profile Canvas Contents-->
+                            <%sec.forEach((item)=>{%>
+                                <h2 class="pt-2">
+                                    <%=item.username%>
+                                </h2>
+                                <h6 class="pt-3">
+                                    <%=item.address%>
+                                </h6>
+                            
+                            <button class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#profileDetails">Edit Profile
+                                Details</button>
+
+                                <form action="/logout" method="POST">
+                                    <button class="btn btn-primary mt-3">Logout</button>
+                                </form>
+                                <%});%>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav class="navbar navbar-expand-md p-3">
+            <a href="#" class="navbar-brand fs-2">LOGO</a>
+            <!--Search Bar-->
+            <div id="searchBar" class="d-flex">
+                <input type="text" class="form-control p-1" placeholder="Search Category" id="search" oninput="filterJobs()">
+                <label for="search" class="ms-2"><img src="search.svg" alt="search" width="25" height="25">
+                </label>
+            </div>
+
+            <div class="collapse navbar-collapse" id="navbarNav" style="margin-left: 20%;">
+                <div class="dropdown">
+                    <a class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        Food
+                    </a>
+                    <ul class="dropdown-menu" id="categoryDropdown">
+                        <li><a id="list1" class="dropdown-item" href="#">Cook</a></li>
+                        <li><a id="list2" class="dropdown-item" href="#">Baker</a></li>
+                        <li><a id="list3" class="dropdown-item" href="#">Cater</a></li>
+                    </ul>
+                </div>
+
+                <div class="dropdown ms-5">
+                    <a class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        Maintenance
+                    </a>
+                    <ul class="dropdown-menu" id="categoryDropdown2">
+                        <li><a id="list4" class="dropdown-item" href="#">Electrician</a></li>
+                        <li><a id="list5" class="dropdown-item" href="#">Plumber</a></li>
+                        <li><a id="list6" class="dropdown-item" href="#">Mechanic</a></li>
+                    </ul>
+                </div>
+
+                <div class="dropdown ms-5">
+                    <a class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        Craft
+                    </a>
+                    <ul class="dropdown-menu" id="categoryDropdown3">
+                        <li><a id="list7" class="dropdown-item" href="#">Furniture</a></li>
+                        <li><a id="list8" class="dropdown-item" href="#">Tailoring</a></li>
+                        <li><a id="list9" class="dropdown-item" href="#">Carpenter</a></li>
+                    </ul>
+                </div>
+
+                <div class="dropdown ms-5">
+                    <a class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        Home Service
+                    </a>
+                    <ul class="dropdown-menu" id="categoryDropdown4">
+                        <li><a id="list10" class="dropdown-item" href="#">Baby Sitter</a></li>
+                        <li><a id="list11" class="dropdown-item" href="#">Laundry</a></li>
+                        <li><a id="list12" class="dropdown-item" href="#">Caretaker</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!--Sidepanel-->
+        <div id="side">
+            <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasEnd"
+                aria-controls="offcanvasEnd" id="menu"><img src="list.svg" alt="bars" width="50"></button>
+        
+            <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasEnd">
+                <div class="offcanvas-header">
+                    <h5 id="offcanvasTopLabel">Menu</h5>
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body p-0 d-flex flex-column text-center" id="offcanvas">
+                    <a href="#" class="mt-2 p-2">Home</a>
+                    <a href="/about_seeker" class="mt-2 p-2">About Us</a>
+                    <a href="/services_seeker" class="mt-2 p-2">Services</a>
+                    <a href="contact_seeker" class="mt-2 p-2">Contact Us</a>
+
+                    <!--Display in mobile-->
+                    <div class="dropright d-md-block d-lg-none">
+                        <a class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            Food
+                        </a>
+                        <ul class="dropdown-menu" id="categoryDropdown5">
+                            <li><a id="list1" class="dropdown-item" href="#">Cook</a></li>
+                            <li><a id="list2" class="dropdown-item" href="#">Baker</a></li>
+                            <li><a id="list3" class="dropdown-item" href="#">Cater</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="dropright d-md-block d-lg-none">
+                        <a class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            Maintenance
+                        </a>
+                        <ul class="dropdown-menu" id="categoryDropdown6">
+                            <li><a id="list4" class="dropdown-item" href="#">Electrician</a></li>
+                            <li><a id="list5" class="dropdown-item" href="#">Plumber</a></li>
+                            <li><a id="list6" class="dropdown-item" href="#">Mechanic</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="dropright d-md-block d-lg-none">
+                        <a class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            Craft
+                        </a>
+                        <ul class="dropdown-menu" id="categoryDropdown7">
+                            <li><a id="list7" class="dropdown-item" href="#">Furniture</a></li>
+                            <li><a id="list8" class="dropdown-item" href="#">Tailoring</a></li>
+                            <li><a id="list9" class="dropdown-item" href="#">Carpenter</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="dropright d-md-block d-lg-none">
+                        <a class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            Home Service
+                        </a>
+                        <ul class="dropdown-menu" id="categoryDropdown8">
+                            <li><a id="list10" class="dropdown-item" href="#">Baby Sitter</a></li>
+                            <li><a id="list11" class="dropdown-item" href="#">Laundry</a></li>
+                            <li><a id="list12" class="dropdown-item" href="#">Caretaker</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!--Content-->
+
+    <div class="container">
+        <div class="row">
+            <% data.forEach((item,index)=> { %>
+                <div class="col-md-4 job-card" data-category="<%= item.category.toLowerCase()%>">
+                    <div class="card mt-4" style="min-height: 300px;">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">
+                                <img src="/profile_images/<%=item.profileimg%>" alt="Icon" width="100" height="100" style="border-radius: 50%;">
+                            </h5>
+                            <p class="card-text">Recruiter Name: <%= item.fullname %>
+                            </p>
+                            <p class="card-text">Address: <%= item.address %>
+                            </p>
+                            <p class="card-text" data-category="<%= item.category.toLowerCase() %>">Finding: <%= item.category %>
+                            </p>
+                            <p class="card-text">Description: <%= item.description %>
+                            </p>
+                            <p class="card-text">
+                            <p class="card-text">Date Issued: <%= item.offerDate.toLocaleDateString() %>
+                            </p>
+                            </p>
+                            <a href="https://www.facebook.com/profile.php?id=100076660450697" class="btn btn-primary">Message</a>
+                        </div>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+    </div>
+
+    <!--Profile Update Modal Body-->
+    <div class="modal fade" id="profileModal" tabindex="5" aria-labelledby="ProfileModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>Change Profile Picture</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+    
+                <div class="modal-body">
+                    <form action="/update" method="post" enctype="multipart/form-data">
+                        <input type="file" name="profiles" accept="image/*">
+                        <button type="submit" class="btn btn-primary" name="change">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--Profile Details Modal Body-->
+<div class="modal fade" id="profileDetails" tabindex="-1" aria-labelledby="ProfileModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4>Change Profile Details</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <form action="/prof_upd" method="post">
+                    <input type="text" placeholder="New Username" name="new_username" required><br><br>
+                    <input type="text" placeholder="New Address" name="new_address" required><br><br>
+                    <button type="submit" class="btn btn-primary" name="change">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script src="main.js"></script>
+</body>
+</html>
